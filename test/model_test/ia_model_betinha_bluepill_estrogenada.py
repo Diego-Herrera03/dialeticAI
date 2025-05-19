@@ -1,5 +1,5 @@
 from random import randint
-
+import matplotlib as plt
 #plano geral do código
 
 
@@ -83,6 +83,7 @@ def gen_reproduce(weights):
         weights[14][0] = (fathers[0][0] + mothers[1][0]) / 3.2
         weights[15][0] = (fathers[1][0] + mothers[0][0]) / 3.3
 
+    return weights[0]
 
 def show(weights):
     for i in weights:
@@ -111,6 +112,9 @@ weights = [[float(randint(0, 1000)), float(0)],
 rounds = int(input("rounds: "))
 rounds += 1
 
+results = []
+best = []
+
 for i in range(0, rounds):
     print("Ciclo: ", i, "\n\n")
 
@@ -121,11 +125,16 @@ for i in range(0, rounds):
     gen_alter(weights)
 
     #Aprimoramento dos pesos
-    gen_reproduce(weights)
-
+    best = gen_reproduce(weights)
+    results.append(best[0])
+    
     #Exibição dos pesos
     show(weights)
 
     print("\n\n")
 
 print("\n\n")
+
+plt.plot(results)#= array pluridimensional???
+plt.ylabel("melhores indivíduos")
+plt.show()

@@ -1,15 +1,7 @@
-a =[[1], [2], [3], [4], [5], [6], [7], [8]]
+a = [[1], [2], [3], [4]]
+b = []
 
-pares = []
-impares = []
+b.append(a[0][0])
+b.append(a[1][0])
 
-for i in range(0, len(a)):
-    if i % 2 == 0:
-        pares.append(a[i])
-
-    else:
-        impares.append(a[i])
-
-print(pares)
-
-print(impares)
+print(b)
